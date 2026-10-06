@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Cookie Editor</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <div id="site" title="Current site"></div>
+    <input id="search" type="search" placeholder="Search cookies by name or value">
+    <div class="toolbar">
+      <button id="btn-add">Add</button>
+      <button id="btn-export">Export</button>
+      <button id="btn-import">Import</button>
+      <button id="btn-delete-all" class="danger">Delete all</button>
+    </div>
+  </header>
+
+  <main>
+    <p id="empty" hidden>No cookies found for this site.</p>
+    <ul id="list"></ul>
+  </main>
+
+  <!-- Edit / Add form -->
+  <dialog id="editor">
+    <form id="form" method="dialog">
+      <h2 id="editor-title">Edit cookie</h2>
+      <label>Name <input id="f-name" required></label>
+      <label>Value <textarea id="f-value" rows="3"></textarea></label>
+      <label>Domain <input id="f-domain" required></label>
+      <label>Path <input id="f-path" value="/" required></label>
+      <label>Expires <input id="f-expires" type="datetime-local"></label>
+      <label class="check"><input id="f-session" type="checkbox"> Session cookie (no expiry)</label>
+      <label class="check"><input id="f-secure" type="checkbox"> Secure</label>
+      <label class="check"><input id="f-httponly" type="checkbox"> HttpOnly</label>
+      <label>SameSite
+        <select id="f-samesite">
+          <option value="unspecified">unspecified</option>
+          <option value="no_restriction">no_restriction (None)</option>
+          <option value="lax">lax</option>
+          <option value="strict">strict</option>
+        </select>
+      </label>
+      <p id="error" class="error" hidden></p>
+      <div class="actions">
+        <button type="button" id="btn-cancel">Cancel</button>
+        <button type="submit" id="btn-save">Save changes</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Import dialog -->
+  <dialog id="importer">
+    <h2>Import cookies</h2>
+    <p class="hint">Paste a JSON array of cookies (the same format Export gives you).</p>
+    <textarea id="import-text" rows="8"></textarea>
+    <p id="import-error" class="error" hidden></p>
+    <div class="actions">
+      <button type="button" id="btn-import-cancel">Cancel</button>
+      <button type="button" id="btn-import-run">Import</button>
+    </div>
+  </dialog>
+
+  <script src="popup.js"></script>
+</body>
+</html>

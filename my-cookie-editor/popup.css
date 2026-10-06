@@ -1,0 +1,43 @@
+:root {
+  --bg: #fbfaf7;
+  --ink: #23201c;
+  --muted: #6f685f;
+  --line: #ddd7cc;
+  --accent: #2f6f5e;
+  --danger: #b3382c;
+}
+* { box-sizing: border-box; }
+body {
+  width: 420px; min-height: 200px; max-height: 600px;
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 13px/1.4 system-ui, sans-serif;
+}
+header { padding: 10px; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: var(--bg); }
+#site { font-weight: 600; margin-bottom: 6px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+input, textarea, select, button { font: inherit; }
+input[type="search"], dialog input:not([type="checkbox"]), dialog textarea, dialog select {
+  width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-radius: 4px; background: #fff; color: var(--ink);
+}
+.toolbar { display: flex; gap: 6px; margin-top: 8px; }
+button { padding: 5px 10px; border: 1px solid var(--line); border-radius: 4px; background: #fff; color: var(--ink); cursor: pointer; }
+button:hover { border-color: var(--accent); }
+button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+button.danger { color: var(--danger); margin-left: auto; }
+button.primary, #btn-save, #btn-import-run { background: var(--accent); border-color: var(--accent); color: #fff; }
+main { overflow-y: auto; max-height: 480px; }
+#list { list-style: none; margin: 0; padding: 0; }
+#list li { padding: 8px 10px; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 1fr auto; gap: 4px 8px; }
+.c-name { font-weight: 600; word-break: break-all; }
+.c-value { grid-column: 1; color: var(--muted); word-break: break-all; max-height: 3.9em; overflow: hidden; }
+.c-meta { grid-column: 1; font-size: 11px; color: var(--muted); }
+.c-actions { grid-row: 1 / span 3; grid-column: 2; display: flex; flex-direction: column; gap: 4px; }
+.c-actions button { padding: 3px 8px; font-size: 12px; }
+#empty { padding: 20px; text-align: center; color: var(--muted); }
+dialog { width: 380px; border: 1px solid var(--line); border-radius: 8px; padding: 14px; background: var(--bg); color: var(--ink); }
+dialog::backdrop { background: rgba(0,0,0,.35); }
+dialog h2 { margin: 0 0 10px; font-size: 15px; }
+dialog label { display: block; margin-bottom: 8px; }
+dialog label.check { display: flex; align-items: center; gap: 6px; }
+.actions { display: flex; justify-content: flex-end; gap: 6px; margin-top: 10px; }
+.error { color: var(--danger); margin: 6px 0 0; }
+.hint { color: var(--muted); margin: 0 0 8px; }
